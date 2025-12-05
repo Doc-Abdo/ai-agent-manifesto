@@ -1,6 +1,6 @@
 ---
 layout: index
-permalink: /draft
+permalink: /draft/
 is_draft: true
 
 # 1. THE HERO SECTION

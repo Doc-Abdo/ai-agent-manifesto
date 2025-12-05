@@ -1,5 +1,5 @@
 ---
-permalink: /v1
+permalink: /v1/
 redirect_to:
   - /
 ---
