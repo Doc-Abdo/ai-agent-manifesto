@@ -2,6 +2,7 @@
 layout: index
 permalink: /draft/
 is_draft: true
+version: draft
 
 # 1. THE HERO SECTION
 hero:
