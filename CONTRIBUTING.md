@@ -22,6 +22,12 @@ If you are proposing a new principle, removing a section, changing the tone, or 
 *   **Goal:** To stage ideas for the *next* version.
 *   **Process:** We collect and debate major changes in the `draft` folder. Once enough changes are consolidated and approved, the maintainers will cut a new version release (e.g., moving `draft` content to `/v2/MANIFESTO.md`).
 
+### 🔹 Don’t have time for a PR?
+No problem at all! Just drop an issue if you have feedback, a principle to suggest, an objection, a use-case, or anything you think should be included:
+
+* https://github.com/cabincrew-dev/ai-agent-manifesto/issues/new
+
+
 ---
 
 ## 2. Pull Request Guidelines

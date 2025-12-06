@@ -46,6 +46,11 @@ We use a **Versioned Consensus** model for updates:
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for full details on the governance process.
 
+### 🔹 Don’t have time for a PR?
+No problem at all! Just drop an issue if you have feedback, a principle to suggest, an objection, a use-case, or anything you think should be included:
+
+* https://github.com/cabincrew-dev/ai-agent-manifesto/issues/new
+
 ---
 
 ## 🛠 Reference Implementation
