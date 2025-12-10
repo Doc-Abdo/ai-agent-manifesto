@@ -21,7 +21,7 @@
     <meta name="twitter:title" content="{{page.title}}">
     <meta name="twitter:description" content="{{page.motto}}">
 
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{site.url}}/favicon.png">
 
     <link rel="canonical" href="https://cabincrew.dev/manifesto" />
 
@@ -32,82 +32,17 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
         rel="stylesheet">
 
-    <!-- Tailwind CSS (Runtime for Zero-Build) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{{site.url}}/assets/css/main.css">
 
     <!-- GitHub Buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bg: '#0B0F19',
-                        surface: '#161b22',
-                        border: '#30363d',
-                        primary: '#38bdf8', // Cyan-400
-                        text: '#c9d1d9',
-                        muted: '#8b949e'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    }
-                }
-            }
-        }
-        async function loadSignatories() {
+        async function loadContributors() {
             const repo = 'cabincrew-dev/ai-agent-manifesto';
-            const container = document.getElementById('signatories-panel');
-            const grid = document.getElementById('avatar-grid');
-            const limit = 24;
-
-            try {
-                const response = await fetch(`https://api.github.com/repos/${repo}/stargazers?per_page=100`);
-                if (!response.ok) return;
-
-                const users = await response.json();
-
-                if (users.length === 0) return;
-
-                // Show the section
-                container.classList.remove('hidden');
-
-                // Render First N users
-                users.slice(0, limit).forEach(user => {
-                    const a = document.createElement('a');
-                    a.href = user.html_url;
-                    a.target = "_blank";
-                    a.rel = "noopener noreferrer nofollow";
-                    a.className = "relative group";
-
-                    a.innerHTML = `
-                <img src="${user.avatar_url}" 
-                     alt="${user.login}" 
-                     class="w-10 h-10 rounded-full border-2 border-transparent group-hover:border-primary transition-all grayscale group-hover:grayscale-0 bg-surface">
-                <!-- Tooltip -->
-                <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-slate-800">
-                    ${user.login}
-                </div>
-            `;
-                    grid.appendChild(a);
-                });
-
-                // Handle "And X Others"
-                if (users.length > limit) {
-                    document.getElementById('more-signers').classList.remove('hidden');
-                }
-
-            } catch (e) {
-                console.log("Signatory uplink failed", e);
-            }
-        }
-
-        async function loadAuthors() {
-            const repo = 'cabincrew-dev/ai-agent-manifesto';
-            const container = document.getElementById('authors-panel');
-            const grid = document.getElementById('authors-avatar-grid');
+            const container = document.getElementById('contributors-panel');
+            const grid = document.getElementById('contributors-avatar-grid');
             const limit = 24;
 
             try {
@@ -143,17 +78,16 @@
 
                 // Handle "And X Others"
                 if (users.length > limit) {
-                    document.getElementById('more-authors').classList.remove('hidden');
+                    document.getElementById('more-contributors').classList.remove('hidden');
                 }
 
             } catch (e) {
-                console.log("Author uplink failed", e);
+                console.log("Contributor uplink failed", e);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadAuthors();
-            loadSignatories();
+            loadContributors();
         });
 
     </script>
@@ -235,9 +169,16 @@
                 <a href="/draft/"
                     class="{% if page.is_draft %}text-primary{% else %}text-muted hover:text-white{% endif %} transition-colors">Next
                     (Draft)</a>
-                <a href="https://github.com/cabincrew-dev/ai-agent-manifesto" title="PR Welcome"
+                <a class="inline-block mx-auto" href="https://github.com/cabincrew-dev/ai-agent-manifesto/pulls" title="Open PRs"
                     ref="noopener noreferrer nofollow"><img
-                        src="https://badgen.net/https/pr-welcome-badge.vercel.app/api/badge/cabincrew-dev/ai-agent-manifesto"></a>
+                        src="https://badgen.net/github/prs/cabincrew-dev/ai-agent-manifesto?label=PRs"></a>
+                <a class="inline-block mx-auto" href="https://github.com/cabincrew-dev/ai-agent-manifesto/issues" title="Open Issues"
+                    ref="noopener noreferrer nofollow"><img
+                        src="https://badgen.net/github/issues/cabincrew-dev/ai-agent-manifesto?label=Issues"></a>
+                <a class="inline-block mx-auto" href="https://github.com/cabincrew-dev/ai-agent-manifesto/stargazers" title="Stargazers"
+                    ref="noopener noreferrer nofollow"><img
+                        src="https://badgen.net/github/stars/cabincrew-dev/ai-agent-manifesto?label=Stars"></a>
+
                 <a href="https://github.com/cabincrew-dev/ai-agent-manifesto" class="github-corner"
                     title="View source on GitHub" ref="noopener noreferrer nofollow"><svg width="80" height="80"
                         viewBox="0 0 250 250"
@@ -279,85 +220,47 @@
             </p>
         </header>
 
-        <!-- PREAMBLE -->
+        <!-- MANIFESTO -->
         <section id="preamble" class="max-w-3xl mx-auto px-6 mb-20">
             <div class="prose prose-invert prose-lg text-text/90">
                 {{content}}
             </div>
         </section>
-
-        <!-- PRINCIPLES (The Structured Data) -->
+        <!-- CONTRIBUTORS -->
         <section class="max-w-3xl mx-auto px-6 mb-24 space-y-12">
-            {% for principle in page.principles %}
-            <div class="group">
-                <div class="font-mono text-primary text-sm mb-2">0{{ forloop.index }}</div>
-                <h2 class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
-                    {{ principle.title }}
-                </h2>
-                <p class="text-lg font-semibold text-white mb-2">
-                    {{ principle.axiom }}
-                </p>
-                <p class="text-muted leading-relaxed">
-                    {{ principle.description }}
-                </p>
-            </div>
-            {% endfor %}
-
-
-            <div id="authors-panel" class="hidden pt-10 text-center">
+            <div id="contributors-panel" class="hidden pt-10 text-center">
                 <p class="text-sm font-mono text-muted uppercase tracking-widest mb-6">
-                    Authors
+                    Contributors
                 </p>
 
                 <!-- The Avatar Grid -->
-                <div id="authors-avatar-grid" class="flex flex-wrap justify-center gap-3">
+                <div id="contributors-avatar-grid" class="flex flex-wrap justify-center gap-3">
                     <!-- Avatars injected here via JS -->
                 </div>
 
-                <p id="more-authors" class="text-xs text-slate-600 mt-6 font-mono hidden">
+                <p id="more-contributors" class="text-xs text-slate-600 mt-6 font-mono hidden">
                     <a href="https://github.com/cabincrew-dev/ai-agent-manifesto/graphs/contributors" target="_blank"
                         rel="noopener noreferrer nofollow" class="text-primary font-mono hover:underline">Explore
                         All
-                        Authors</a>
+                        Contributors</a>
                 </p>
             </div>
         </section>
 
         <!-- PLEDGE / CTA -->
         <section class="bg-surface border-y border-border py-20">
-            <div class="max-w-3xl mx-auto px-6 text-center">
-                <h3 class="text-2xl font-bold text-white mb-6">Join the Movement</h3>
+            <div class="max-w-3xl mx-auto px-6 text-center justify-center">
+                <h3 class="text-2xl font-bold text-white mb-6">Support on GitHub</h3>
                 <p class="text-muted mb-10 max-w-lg mx-auto">
                     We believe that the move from "Automation" to "Autonomy" requires a fundamental
                     shift in how we architect trust. We commit to building systems that prioritize
                     <strong>Verification over Vibes</strong> and <strong>Safety over Speed</strong>.
                 </p>
-                <div style="width: 66%; margin: auto;" class="transform scale-150">
-                    <a class="github-button " href="https://github.com/cabincrew-dev/ai-agent-manifesto"
-                        data-color-scheme="no-preference: dark; light: light; dark: dark;" data-icon="octicon-star"
-                        data-size="large" data-show-count="true"
-                        aria-label="Star cabincrew-dev/ai-agent-manifesto on GitHub">
-                        Sign the Manifesto
-                    </a>
-                </div>
-                <p class="text-xs text-muted mt-4 font-mono">via GitHub Star</p>
-            </div>
-            <div id="signatories-panel" class="hidden pt-10 text-center">
-                <p class="text-sm font-mono text-muted uppercase tracking-widest mb-6">
-                    Signatories
-                </p>
+                     <a class="inline-block mx-auto" href="https://github.com/cabincrew-dev/ai-agent-manifesto/stargazers" title="Stargazers"
+                    ref="noopener noreferrer nofollow"><img class="scale-150"
+                        src="https://badgen.net/github/stars/cabincrew-dev/ai-agent-manifesto?label=Stargazers"></a>
+                   
 
-                <!-- The Avatar Grid -->
-                <div id="avatar-grid" class="flex flex-wrap justify-center gap-3">
-                    <!-- Avatars injected here via JS -->
-                </div>
-
-                <p id="more-signers" class="text-xs text-slate-600 mt-6 font-mono hidden">
-                    <a href="https://github.com/cabincrew-dev/ai-agent-manifesto/stargazers/" target="_blank"
-                        rel="noopener noreferrer nofollow" class="text-primary font-mono hover:underline">Explore
-                        All
-                        Signatories</a>
-                </p>
             </div>
         </section>
 
