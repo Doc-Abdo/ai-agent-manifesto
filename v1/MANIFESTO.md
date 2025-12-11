@@ -42,11 +42,11 @@ Output without history is contraband. In a probabilistic workflow, the final art
 Safety guardrails must exist outside the agent's cognitive loop. We cannot rely on an LLM to 'promise' it checked for security. Policy must be deterministic code, executed by a neutral orchestrator.
 
 ## 04
-### The Principle of Immutable Evidence"
-#### Logs must be proofs, not just text."
+### The Principle of Immutable Evidence
+#### Logs must be proofs, not just text.
 In the event of failure, a simple text log is insufficient. Autonomous systems require a chain of custody that is mathematically non-repudiable. Every decision and state change must be signed and sealed.
 
 ## 05
 ### The Principle of Ephemeral Identity
 #### Static keys are a failure of architecture.
-Autonomous agents are transient processes. They should not hold long-lived credentials. Identity must be ephemeral, issued only for the duration of a specific task, and cryptographically bound to the workload."
+Autonomous agents are transient processes. They should not hold long-lived credentials. Identity must be ephemeral, issued only for the duration of a specific task, and cryptographically bound to the workload.
